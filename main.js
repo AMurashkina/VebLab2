@@ -1,9 +1,10 @@
+
 console.log("Задача №1 Абсолютное значение");
 
 let a;
 function absValue(a){
     if (a >= 0) return a;
-    else return a*(-1);
+    else return a * (-1);
 }
 
 console.log(`absValue(${-2})`);
@@ -67,7 +68,7 @@ let student = {
     };
 
 let features = ""; // все свойства обьекта
-for (let key in student){  //перебов св-тв обьекта
+for (let key in student){  //перебор св-тв обьекта
     features = features + key + ", ";
 }
 
@@ -75,10 +76,39 @@ console.log('Список свойств: ',features);
 console.log(`Студент ${student.first_name} ${student.first_name} учится в ${student.group} группе`);
 
 
+
 console.log("");
 console.log("Задача №5 Переключение элементов");
 
 
+let arrImg = document.querySelectorAll('.img');// массив картинок
+let butPrevious = document.getElementById("previous");
+let butNext = document.getElementById("next");
+let num = 0;
 
+arrImg[num].style.display = 'flex';
 
+butNext.addEventListener("click", () => {  //кнопла следующий слайд
+    if(num < arrImg.length - 1){
+        arrImg[num].style.display = 'none';
+        num++;
+        arrImg[num].style.display = 'flex';
+    }else {
+        arrImg[num].style.display = 'none';
+        num = 0;
+        arrImg[num].style.display = 'flex';
+    }
+})
+
+butPrevious.addEventListener("click", () => { // кнопка предыдущий слайд
+    if(num > 0){
+        arrImg[num].style.display = 'none';
+        num--;
+        arrImg[num].style.display = 'flex';
+    }else {
+        arrImg[num].style.display = 'none';
+        num = arrImg.length - 1;
+        arrImg[num].style.display = 'flex';
+    }
+})
 
