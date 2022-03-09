@@ -17,7 +17,6 @@ console.log(`absValue(${0})`);
 console.log(absValue(0));
 
 
-console.log("");
 console.log("Задача №2 Палиндром");
 
 let word = prompt('Введите слово:', 'довод');
@@ -38,27 +37,36 @@ function isPalindrome(arr){
 console.log(`isPalindrome("${arrWord}")\n`, isPalindrome(arrWord));
 
 
-console.log("");
 console.log("Задача №3 Сложение матриц");
 
 let arr1 = [[1,2],[3,4]];
 let arr2 = [[9,8],[7,6]];
 let arr3 = [[1,2]];
 
+let arrRes ="";
+let numSrt = 0; 
+let elemStr = 0;
+
 function matrixAddition(a1, a2){
     let i = 0;
     if (a1.length != a2.length || a1[0].length != a2[0].length || a1[1].length != a2[1].length){ // проверка сообветствия строки и столбцы
         return 'операция невыполнима';
     }else {
-        return (`${a1[0][0] + a2[0][0]}\t${a1[0][1] + a2[0][1]}\n${a1[1][0] + a2[1][0]}\t${a1[1][1] + a2[1][1]}`);
+        while ( numSrt < a1.length ){
+            while ( elemStr < a1[0].length ){
+                arrRes = arrRes + `${a1[numSrt][elemStr] + a2[numSrt][elemStr]}\t`;
+                elemStr ++;
+            }
+            arrRes = arrRes + '\n';
+            numSrt ++;
+            elemStr = 0;
+        }
+        return arrRes;
     }
 }
-
-console.log(`matrixAddition([[${arr1[0]}],[${arr1[1]}]], [[${arr2[0]}],[${arr2[1]}]])\n${matrixAddition(arr1, arr2)}`);
-console.log(`matrixAddition([[${arr2[0]}],[${arr2[1]}]], [${arr3[0]}])\n${matrixAddition(arr2, arr3)}`);
+console.log(matrixAddition(arr1, arr2));
 
 
-console.log("");
 console.log("Задача №4 Работа с объектом");
 
 let student = {
@@ -76,10 +84,7 @@ console.log('Список свойств: ',features);
 console.log(`Студент ${student.first_name} ${student.first_name} учится в ${student.group} группе`);
 
 
-
-console.log("");
 console.log("Задача №5 Переключение элементов");
-
 
 let arrImg = document.querySelectorAll('.img');// массив картинок
 let butPrevious = document.getElementById("previous");
